@@ -1,8 +1,11 @@
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet,  View } from 'react-native';
 import { Title } from 'react-native-paper';
-import { fetchAgents } from '../../../api';
+import { fetchAgents } from '../../api';
 import AgentList from '../shared/AgentCardL';
+import { Entypo } from '@expo/vector-icons'; 
+import theme from '../../theme';
+import Logo from '../shared/logo';
 
 const Agents = ({navigation}) => {
 
@@ -20,9 +23,15 @@ const Agents = ({navigation}) => {
 
   
     return(
-        <View>
-            <Title style={styles.title}> Agents </Title>
-            {agent.status && <AgentList agent={agent} /> }
+        <View style={styles.back}>
+            <View>
+                <Entypo name="menu" size={34} color={theme.colors.backgroundWhite} style={styles.hamburguer} onPress={() => navigation.openDrawer()}/>
+                <View style={styles.logo}>
+                    <Logo/>
+                </View>
+            </View>
+            <Title style={styles.title}>AGENTS</Title>
+            <AgentList agent={agent} navigation={navigation}/>
         </View>
     );
 
@@ -30,7 +39,24 @@ const Agents = ({navigation}) => {
 
 const styles = StyleSheet.create({
     title:{
-        fontSize: 28,
+        fontSize: 20,
+        color: theme.colors.backgroundWhite,
+        bottom: "40%",
+        left: "5%"
+    },
+    hamburguer: {
+        bottom: "240%",
+        left: "5%"
+    },
+    back: {
+        flex: 1,
+        justifyContent: "center",
+        padding: 10,
+        backgroundColor: theme.colors.backgroundGreen,
+    },
+    logo: {
+        bottom: "280%",
+        left: "70%"
     }
 })
 

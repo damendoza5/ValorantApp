@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Button, Caption, Text, TextInput } from "react-native-paper";
+import theme from "../../theme"
+import { AntDesign } from '@expo/vector-icons'; 
 
 function SigninForm() {
   const [email, setEmail] = useState("");
@@ -27,6 +29,7 @@ function SigninForm() {
         onChangeText={setEmail}
         value={email}
         onBlur={() => handleVerify("email")}
+        style={styles.textInput1}
       />
       {emailError && (
         <Caption>Por favor ingresa tu cuenta de correo electrónico</Caption>
@@ -39,10 +42,11 @@ function SigninForm() {
         onChangeText={setPassword}
         value={password}
         onBlur={() => handleVerify("password")}
+        style={styles.textInput2}
       />
       {passwordError && <Caption>Por favor ingresa tu contraseña</Caption>}
-      <Button mode="contained" style={styles.button}>
-        Signin
+      <Button mode="contained" style={styles.button} >
+        <AntDesign name="right" size={24} color={theme.colors.backgroundWhite}/>
       </Button>
     </View>
   );
@@ -50,8 +54,21 @@ function SigninForm() {
 
 const styles = StyleSheet.create({
   button: {
-    marginTop: 20,
+    alignSelf: "flex-end",
+    position: "relative",
+    marginTop: "15%",
     marginBottom: 20,
+    width: 107,
+    padding: 15,
+    borderRadius: 20,
+    backgroundColor: theme.colors.redAccent
+  },
+  textInput1: {
+    backgroundColor: theme.colors.blueClaro,
+    marginVertical: "2%"
+  },
+  textInput2: {
+    backgroundColor: theme.colors.blueClaro,
   },
 });
 

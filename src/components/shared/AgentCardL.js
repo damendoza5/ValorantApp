@@ -15,12 +15,11 @@ const AgentList = ({agent}) =>{
             <FlatList
                 data = {agent.data}
                 keyExtractor = {(item) => item.id.toString()}
-                showsVerticalScrollIndicator = {true}
                 ListEmptyComponent = {empyFlatlist}
                 renderItem = {({item})=>{
                     return(
                         <TouchableOpacity key = {item.id}>
-                            <AgentsCard desc = {item.desc} name = {item.name} role = {item.role.displayName} img = {item.bustPotrait} />
+                            <AgentsCard desc = {item.desc} name = {item.name} role = {item.role.displayName} img = {item.fullPortrait} />
                         </TouchableOpacity>
                     )
                 }}

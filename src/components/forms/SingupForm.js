@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Button, Caption, TextInput } from "react-native-paper";
+import theme from "../../theme";
+import { AntDesign } from '@expo/vector-icons'; 
 
 function SignupForm() {
   const [fullname, setFullname] = useState("");
@@ -35,6 +37,7 @@ function SignupForm() {
         label="Fullname"
         value={fullname}
         onChangeText={setFullname}
+        style={styles.textInput1}
         onBlur={() => handleVerify("fullname")}
       />
       {fullnameError && <Caption>Please enter your fullname</Caption>}
@@ -44,6 +47,7 @@ function SignupForm() {
         value={email}
         onChangeText={setEmail}
         autoCapitalize="none"
+        style={styles.textInput1}
         onBlur={() => handleVerify("email")}
       />
       {emailError && <Caption>Please enter your email address</Caption>}
@@ -53,6 +57,7 @@ function SignupForm() {
         value={password}
         onChangeText={setPassword}
         autoCapitalize="none"
+        style={styles.textInput1}
         secureTextEntry
         onBlur={() => handleVerify("password")}
       />
@@ -63,6 +68,7 @@ function SignupForm() {
         value={confirmPassword}
         onChangeText={setConfirmPassword}
         autoCapitalize="none"
+        style={styles.textInput2}
         secureTextEntry
         onBlur={() => handleVerify("confirmPassword")}
       />
@@ -70,7 +76,7 @@ function SignupForm() {
         <Caption>Please enter your password confirmation</Caption>
       )}
       <Button mode="contained" style={styles.button}>
-        Create account
+        <AntDesign name="right" size={24} color={theme.colors.backgroundWhite} />
       </Button>
     </View>
   );
@@ -78,9 +84,22 @@ function SignupForm() {
 
 const styles = StyleSheet.create({
   button: {
-    marginTop: 20,
+    alignSelf: "flex-end",
+    position: "relative",
+    marginTop: "15%",
     marginBottom: 20,
+    width: 107,
+    padding: 15,
+    borderRadius: 20,
+    backgroundColor: theme.colors.redAccent
   },
+  textInput1: {
+    backgroundColor: theme.colors.blueClaro,
+    marginVertical: "2%"
+  },
+  textInput2: {
+    backgroundColor: theme.colors.blueClaro,
+  }
 });
 
 export default SignupForm;
