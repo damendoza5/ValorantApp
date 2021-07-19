@@ -14,14 +14,15 @@ const Agents = ({navigation}) => {
     const getAgent = async () =>{
         const response = await fetchAgents();
 
-        setAgent(response)
+        setAgent(response);
+        
     }
 
     useEffect(() =>{
-        getAgent
+        getAgent();
     }, [])
 
-  
+    
     return(
         <View style={styles.back}>
             <View>
@@ -41,8 +42,9 @@ const styles = StyleSheet.create({
     title:{
         fontSize: 20,
         color: theme.colors.backgroundWhite,
-        bottom: "40%",
-        left: "5%"
+        bottom: "2%",
+        left: "5%",
+        position:"relative"
     },
     hamburguer: {
         bottom: "240%",
@@ -55,8 +57,9 @@ const styles = StyleSheet.create({
         backgroundColor: theme.colors.backgroundGreen,
     },
     logo: {
-        bottom: "280%",
-        left: "70%"
+        bottom: "10%",
+        left:"80%",
+        width:1
     }
 })
 

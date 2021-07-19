@@ -3,13 +3,15 @@ import { StyleSheet, View, Text }from 'react-native'
 import { Card } from 'react-native-paper'
 
 const AgentsCard = ({name, desc, role, img}) => {
+    
     return(
         <Card style = {styles.container}>
             <Card.Title title = {name}/>
             <Card.Content>
-                <View style = {styles.img}>{img}</View>
                 <View>
-                    <Text>{role}</Text>
+                    {role && [role].map((rol) => {
+                        <Text>{rol.displayName}</Text>
+                    })}
                     <Text>{desc}</Text>
                 </View>
             </Card.Content>
@@ -19,7 +21,8 @@ const AgentsCard = ({name, desc, role, img}) => {
 
 const styles = StyleSheet.create({
     container:{
-        height:600
+        height:'auto',
+        margin: 20
     },
     img:{
         height:400,
