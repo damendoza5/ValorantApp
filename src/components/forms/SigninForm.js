@@ -4,7 +4,7 @@ import { Button, Caption, Text, TextInput } from "react-native-paper";
 import theme from "../../theme"
 import { AntDesign } from '@expo/vector-icons'; 
 
-function SigninForm() {
+function SigninForm({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
@@ -45,7 +45,7 @@ function SigninForm() {
         style={styles.textInput2}
       />
       {passwordError && <Caption>Por favor ingresa tu contraseña</Caption>}
-      <Button mode="contained" style={styles.button} >
+      <Button mode="contained" style={styles.button} onPress={() => navigation.navigate("AppIndex")}>
         <AntDesign name="right" size={24} color={theme.colors.backgroundWhite}/>
       </Button>
     </View>

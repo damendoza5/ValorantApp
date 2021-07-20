@@ -1,17 +1,21 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import AgentStack from "../screens/routes/AgentStack";
+import Home from "../screens/Home";
+import DrawerContent from "./DrawerContent";
+import theme from "../../theme";
 
 const Drawer = createDrawerNavigator();
 
-const DrawerMenu = () => {
+const DrawerMenu = ({ navigation }) => {
     return(
-    <NavigationContainer>
-        <Drawer.Navigator initialRouteName="Agents">
-            <Drawer.Screen name="Agents" component={AgentStack} />
-        </Drawer.Navigator>
-    </NavigationContainer>
+    <Drawer.Navigator drawerContent={props => <DrawerContent {...props}/>} 
+        initialRouteName="Home" 
+        drawerStyle={{backgroundColor: theme.colors.backgroundGreen}}
+    >
+        <Drawer.Screen name="Home" component={Home} />
+        <Drawer.Screen name="Agents" component={AgentStack} />
+    </Drawer.Navigator>
     )
 }
 

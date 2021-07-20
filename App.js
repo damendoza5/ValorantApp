@@ -8,7 +8,7 @@ export default function App() {
   return (
     <PaperProvider theme={theme}>
       <StatusBar style="light"/>
-      <Navigation />
+      <Navigation/>
     </PaperProvider>
   );
 }
