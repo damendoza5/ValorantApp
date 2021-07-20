@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
         left: "5%"
     },
     logo: {
-        bottom: "280%",
-        left: "70%"
+        bottom: "282%",
+        left: "80%"
     },
     title: {
         fontSize: 20,

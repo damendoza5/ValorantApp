@@ -12,27 +12,28 @@ const AgentList = ({agent}) =>{
 
     return (
         <View >
-            <FlatList
+            <FlatList style={styles.container}
                 data = {agent.data}
                 keyExtractor = {(item) => item.uuid.toString() }
+                horizontal
                 showsHorizontalScrollIndicator={true}
                 ListEmptyComponent = {empyFlatlist}
                 renderItem = {({item})=>{
                     return(
                         <TouchableOpacity key = {item.uuid}>
-                            <AgentsCard desc = {item.description} name = {item.displayName} role = {item.role} img = {item.fullPortrait} />
+                            <AgentsCard desc = {item.description} name = {item.displayName} role = {item.role} img = {item.fullPortrait} uuid={item.uuid}/>
                         </TouchableOpacity>
                     )
                 }}
             />
-                
-            
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-   
+   container: {
+       bottom: "15%"
+   }
 })
 
 export default AgentList;

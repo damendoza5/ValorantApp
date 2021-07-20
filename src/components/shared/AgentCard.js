@@ -1,18 +1,20 @@
 import React from 'react';
 import { StyleSheet, View, Text }from 'react-native'
 import { Card } from 'react-native-paper'
+import theme from '../../theme';
+import AgentImage from './AgentImage';
 
-const AgentsCard = ({name, desc, role, img}) => {
+const AgentsCard = ({name, role, uuid}) => {
     
     return(
         <Card style = {styles.container}>
-            <Card.Title title = {name}/>
             <Card.Content>
+                <AgentImage uuid={uuid}/>
                 <View>
+                    <Text style={styles.name}>{name.toUpperCase()}</Text>
                     {role && [role].map((rol) => {
                         <Text>{rol.displayName}</Text>
                     })}
-                    <Text>{desc}</Text>
                 </View>
             </Card.Content>
         </Card>
@@ -21,13 +23,19 @@ const AgentsCard = ({name, desc, role, img}) => {
 
 const styles = StyleSheet.create({
     container:{
-        height:'auto',
-        margin: 20
+        height: 500,
+        width: 430,
+        margin: 20,
+        backgroundColor: theme.colors.redAccent,
+        borderRadius: 50
     },
-    img:{
-        height:400,
-        width: 200
-    },
+    name: {
+        position: 'relative',
+        alignSelf: 'center',
+        color: theme.colors.backgroundWhite,
+        fontWeight: 'bold',
+        fontSize: 23,
+    }
 });
 
 export default AgentsCard;

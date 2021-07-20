@@ -42,12 +42,12 @@ const styles = StyleSheet.create({
     title:{
         fontSize: 20,
         color: theme.colors.backgroundWhite,
-        bottom: "2%",
+        bottom: "8%",
         left: "5%",
         position:"relative"
     },
     hamburguer: {
-        bottom: "240%",
+        bottom: "10%",
         left: "5%"
     },
     back: {
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         backgroundColor: theme.colors.backgroundGreen,
     },
     logo: {
-        bottom: "10%",
+        bottom: "50%",
         left:"80%",
         width:1
     }
