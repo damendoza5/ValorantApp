@@ -5,16 +5,13 @@ import theme from '../../theme';
 import AgentImage from './AgentImage';
 
 const AgentsCard = ({name, role, uuid}) => {
-    
+
     return(
         <Card style = {styles.container}>
             <Card.Content>
                 <AgentImage uuid={uuid}/>
                 <View>
                     <Text style={styles.name}>{name.toUpperCase()}</Text>
-                    {role && [role].map((rol) => {
-                        <Text>{rol.displayName}</Text>
-                    })}
                 </View>
             </Card.Content>
         </Card>

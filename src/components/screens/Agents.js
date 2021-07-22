@@ -7,7 +7,7 @@ import { Entypo } from '@expo/vector-icons';
 import theme from '../../theme';
 import Logo from '../shared/logo';
 
-const Agents = ({navigation}) => {
+const Agents = ({ navigation }) => {
 
     const [agent, setAgent] = useState({});
 
