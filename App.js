@@ -3,13 +3,15 @@ import React from "react";
 import { Provider as PaperProvider } from "react-native-paper";
 import theme from "./src/theme";
 import Navigation from "./src/components/navigation/SignStack";
+import { Provider as AuthProvider } from "./src/providers/AuthContext";
 
 export default function App() {
-  return (
-    <PaperProvider theme={theme}>
-      <StatusBar style="light"/>
-      <Navigation/>
-    </PaperProvider>
-  );
+	return (
+		<AuthProvider>
+			<PaperProvider theme={theme}>
+				<StatusBar style="light" />
+				<Navigation />
+			</PaperProvider>
+		</AuthProvider>
+	);
 }
-
