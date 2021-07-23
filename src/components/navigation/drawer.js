@@ -1,13 +1,14 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import AgentStack from "../screens/routes/AgentStack";
+import WeaponStackScreen from "../screens/routes/WaponsStack";
 import Home from "../screens/Home";
 import DrawerContent from "./DrawerContent";
 import theme from "../../theme";
 
 const Drawer = createDrawerNavigator();
 
-const DrawerMenu = ({ navigation }) => {
+const DrawerMenu = ({}) => {
 	return (
 		<Drawer.Navigator
 			drawerContent={(props) => <DrawerContent {...props} />}
@@ -16,6 +17,7 @@ const DrawerMenu = ({ navigation }) => {
 		>
 			<Drawer.Screen name="Home" component={Home} />
 			<Drawer.Screen name="Agents" component={AgentStack} />
+			<Drawer.Screen name="Weapons" component={WeaponStackScreen} />
 		</Drawer.Navigator>
 	);
 };

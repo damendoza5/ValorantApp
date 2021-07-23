@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet,  View, Dimensions } from 'react-native';
 import { Title } from 'react-native-paper';
-import { fetchAgents } from '../../api';
-import AgentList from '../shared/AgentCardL';
+import { fetchWeapons } from '../../api';
+import WeaponList from '../shared/WeaponCardL';
 import { Entypo } from '@expo/vector-icons'; 
 import theme from '../../theme';
 import Logo from '../shared/logo';
@@ -10,19 +10,19 @@ import Logo from '../shared/logo';
 const deviceWidth = Dimensions.get("window").width;
 const deviceHeight = Dimensions.get("window").height;
 
-const Agents = ({ navigation }) => {
+const Weapons = ({ navigation }) => {
 
-    const [agent, setAgent] = useState({});
+    const [weapon, setWeapon] = useState({});
 
-    const getAgent = async () =>{
-        const response = await fetchAgents();
+    const getWeapon = async () =>{
+        const response = await fetchWeapons();
 
-        setAgent(response);
+        setWeapon(response);
         
     }
 
     useEffect(() =>{
-        getAgent();
+        getWeapon();
     }, [])
 
     
@@ -34,8 +34,8 @@ const Agents = ({ navigation }) => {
                     <Logo/>
                 </View>
             </View>
-            <Title style={styles.title}>AGENTS</Title>
-            <AgentList agent={agent} navigation={navigation}/>
+            <Title style={styles.title}>WEAPONS</Title>
+            <WeaponList weapon={weapon} navigation={navigation}/>
         </View>
     );
 
@@ -45,12 +45,11 @@ const styles = StyleSheet.create({
     title:{
         fontSize: 20,
         color: theme.colors.backgroundWhite,
-        bottom: deviceHeight*0.01,
-        top: deviceHeight*0,
+        top: deviceHeight*0.08,
         left: deviceWidth*0.07,
     },
     hamburguer: {
-        top: deviceHeight*0.02,
+        bottom: deviceHeight*-0.15,
         left: deviceWidth*0.05
     },
     back: {
@@ -60,10 +59,10 @@ const styles = StyleSheet.create({
         backgroundColor: theme.colors.backgroundGreen,
     },
     logo: {
-        bottom: deviceHeight*0,
+        bottom: deviceHeight*-0.1,
         left: deviceWidth*0.75,
         width:1
     }
 })
 
-export default Agents;
+export default Weapons;

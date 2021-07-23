@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Title, Card } from "react-native-paper";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Dimensions } from "react-native";
 import Logo from "../shared/logo";
 import { Entypo } from "@expo/vector-icons";
 import theme from "../../theme";
+
+const deviceWidth = Dimensions.get("screen").width;
+const deviceHeight = Dimensions.get("screen").height;
 
 const Home = ({ navigation }) => {
 	return (
@@ -31,22 +34,22 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: "center",
-		padding: 10,
+		padding: deviceWidth*0.01,
 		backgroundColor: theme.colors.backgroundGreen,
 	},
 	hamburguer: {
-		bottom: "240%",
-		left: "5%",
+		bottom: deviceHeight*0.32,
+		left: deviceWidth*0.05,
 	},
 	logo: {
-		bottom: "282%",
-		left: "80%",
+		bottom: deviceHeight*0.38,
+		left: deviceWidth*0.75,
 	},
 	title: {
 		fontSize: 20,
 		color: theme.colors.backgroundWhite,
-		bottom: "800%",
-		left: "5%",
+		bottom: deviceHeight*0.37,
+		left: deviceWidth*0.05,
 	},
 });
 

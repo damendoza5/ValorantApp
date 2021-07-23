@@ -4,6 +4,7 @@ import { Title, Caption, Drawer, Avatar, Text } from "react-native-paper";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import { Entypo } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import theme from "../../theme";
 
 const DrawerContent = ({ props, navigation }) => {
@@ -53,6 +54,21 @@ const DrawerContent = ({ props, navigation }) => {
 								)}
 								onPress={() => {
 									navigation.navigate("Agents");
+								}}
+							/>
+							<DrawerItem
+								icon={() => (
+									<MaterialCommunityIcons 
+										name="pistol" 
+										size={24} 
+										color={theme.colors.redAccent} 
+									/>
+								)}
+								label={() => (
+									<Text style={{ color: theme.colors.redAccent }}>Weapons</Text>
+								)}
+								onPress={() => {
+									navigation.navigate("Weapons");
 								}}
 							/>
 						</Drawer.Section>
