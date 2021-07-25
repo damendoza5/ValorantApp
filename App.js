@@ -6,12 +6,12 @@ import Navigation from "./src/components/navigation/SignStack";
 import { Provider as AuthProvider } from "./src/providers/AuthContext";
 
 export default function App() {
-	return (
-		<AuthProvider>
-			<PaperProvider theme={theme}>
-				<StatusBar style="light" />
-				<Navigation />
-			</PaperProvider>
-		</AuthProvider>
-	);
+  return (
+    <AuthProvider>
+      <PaperProvider theme={theme}>
+        <StatusBar style="light" />
+        <Navigation />
+      </PaperProvider>
+    </AuthProvider>
+  );
 }
