@@ -7,7 +7,7 @@ import theme from "../../theme";
 
 const Drawer = createDrawerNavigator();
 
-const DrawerMenu = ({ navigation }) => {
+const DrawerMenu = () => {
 	return (
 		<Drawer.Navigator
 			drawerContent={(props) => <DrawerContent {...props} />}

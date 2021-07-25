@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, StyleSheet } from "react-native";
 import { Title, Caption, Drawer, Avatar, Text } from "react-native-paper";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import { Entypo } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
 import theme from "../../theme";
+import { Context as AuthProvider } from "../../providers/AuthContext";
 
 const DrawerContent = ({ props, navigation }) => {
+	const { signout } = useContext(AuthProvider);
+
 	return (
 		<View style={{ flex: 1 }}>
 			<DrawerContentScrollView {...props}>
@@ -67,9 +70,7 @@ const DrawerContent = ({ props, navigation }) => {
 					label={() => (
 						<Text style={{ color: theme.colors.grayOscuro }}>Sign Out</Text>
 					)}
-					onPress={() => {
-						navigation.navigate("Signin");
-					}}
+					onPress={signout}
 					style={styles.option}
 				/>
 			</Drawer.Section>

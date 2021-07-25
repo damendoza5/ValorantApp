@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import { Button, Caption, TextInput, Text } from "react-native-paper";
 import theme from "../../theme";
@@ -6,8 +6,8 @@ import { AntDesign } from "@expo/vector-icons";
 import { Context as AuthContext } from "../../providers/AuthContext";
 import { validate } from "email-validator";
 
-function SignupForm() {
-	const [state, singup] = useContext(AuthContext);
+function SignupForm({ navigation }) {
+	const { state, signup } = useContext(AuthContext);
 	const [fullname, setFullname] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -17,6 +17,10 @@ function SignupForm() {
 	const [passwordError, setPasswordError] = useState(false);
 	const [confirmPasswordError, setConfirmPasswordError] = useState(false);
 	const [error, setError] = useState(false);
+
+	useEffect(() => {
+		if (state.registered) navigation.navigate("AppIndex");
+	}, [state.registered]);
 
 	function handleVerify(input) {
 		if (input === "fullname") {
@@ -28,13 +32,13 @@ function SignupForm() {
 			else setEmailError(false);
 		} else if (input === "password") {
 			if (!password) setPasswordError(true);
-			else if (password.length < 6) setPasswordError(true);
+			else if (password.length < 8) setPasswordError(true);
 			else setPasswordError(false);
 		} else if (input === "confirmPassword") {
 			if (!confirmPassword) setConfirmPasswordError(true);
 			else if (password !== confirmPassword) setConfirmPasswordError(true);
 			else setConfirmPasswordError(false);
-		} else if (input === "singup") {
+		} else if (input === "signup") {
 			if (
 				fullname &&
 				email &&
@@ -45,19 +49,26 @@ function SignupForm() {
 				!passwordError &&
 				!confirmPasswordError
 			) {
-				singup(fullname, email, password);
-			} else setError("All fields are required");
+				try {
+					signup(fullname, email, password);
+				} catch (error) {
+					console.log(error);
+				}
+			} else setError("All fields are required!");
 		}
 	}
 
 	return (
 		<View>
 			{error && <Text>{error}</Text>}
+			{state.errorMessage !== null && <Text>{state.errorMessage}</Text>}
 			<TextInput
 				mode="outlined"
 				label="Fullname"
 				value={fullname}
+				autoCapitalize="words"
 				onChangeText={setFullname}
+				textContentType="givenName"
 				style={styles.textInput1}
 				onBlur={() => handleVerify("fullname")}
 			/>
@@ -66,6 +77,7 @@ function SignupForm() {
 				mode="outlined"
 				label="Email"
 				value={email}
+				textContentType="emailAddress"
 				onChangeText={setEmail}
 				autoCapitalize="none"
 				style={styles.textInput1}
@@ -78,12 +90,16 @@ function SignupForm() {
 				value={password}
 				onChangeText={setPassword}
 				autoCapitalize="none"
+				textContentType="password"
 				style={styles.textInput1}
 				secureTextEntry
 				onBlur={() => handleVerify("password")}
 			/>
 			{passwordError && (
-				<Caption>Please enter a valid password. Min 6 characters</Caption>
+				<Caption>
+					Please enter a valid password. Min 8 characters, 1 capital letter, 1
+					number and 1 special character
+				</Caption>
 			)}
 			<TextInput
 				mode="outlined"
@@ -92,6 +108,7 @@ function SignupForm() {
 				onChangeText={setConfirmPassword}
 				autoCapitalize="none"
 				style={styles.textInput2}
+				textContentType="password"
 				secureTextEntry
 				onBlur={() => handleVerify("confirmPassword")}
 			/>
@@ -101,9 +118,7 @@ function SignupForm() {
 			<Button
 				mode="contained"
 				style={styles.button}
-				onPress={() => {
-					handleVerify("singup");
-				}}
+				onPress={() => handleVerify("signup")}
 			>
 				<AntDesign
 					name="right"

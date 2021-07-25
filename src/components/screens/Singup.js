@@ -36,6 +36,8 @@ const styles = StyleSheet.create({
 	signin: {
 		color: theme.colors.grayOscuro,
 		textDecorationLine: "underline",
+		bottom: 65,
+		width: "65%",
 	},
 	title: {
 		marginBottom: "8%",

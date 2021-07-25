@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { StyleSheet, View } from "react-native";
 import { Button, Caption, Text, TextInput } from "react-native-paper";
 import theme from "../../theme";
 import { AntDesign } from "@expo/vector-icons";
+import { Context as AuthContext } from "../../providers/AuthContext";
 
-function SigninForm({ navigation }) {
+function SigninForm() {
+	const { state, signin } = useContext(AuthContext);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [emailError, setEmailError] = useState(false);
 	const [passwordError, setPasswordError] = useState(false);
+	const [error, setError] = useState("");
 
 	function handleVerify(input) {
 		if (input === "email") {
@@ -17,38 +20,43 @@ function SigninForm({ navigation }) {
 		} else if (input === "password") {
 			if (!password) setPasswordError(true);
 			else setPasswordError(false);
+		} else if (input === "signin") {
+			if (email && password && !emailError && !passwordError) {
+				signin(email, password);
+			}
 		}
 	}
 
 	return (
 		<View>
+			{state.errorMessage !== null && <Text>{state.errorMessage}</Text>}
 			<TextInput
 				mode="outlined"
 				label="Email"
 				autoCapitalize="none"
+				textContentType="emailAddress"
 				onChangeText={setEmail}
 				value={email}
 				onBlur={() => handleVerify("email")}
 				style={styles.textInput1}
 			/>
-			{emailError && (
-				<Caption>Por favor ingresa tu cuenta de correo electrónico</Caption>
-			)}
+			{emailError && <Caption>Please enter your email</Caption>}
 			<TextInput
 				mode="outlined"
 				label="Password"
 				autoCapitalize="none"
 				secureTextEntry
+				textContentType="password"
 				onChangeText={setPassword}
 				value={password}
 				onBlur={() => handleVerify("password")}
 				style={styles.textInput2}
 			/>
-			{passwordError && <Caption>Por favor ingresa tu contraseña</Caption>}
+			{passwordError && <Caption>Please enter your password</Caption>}
 			<Button
 				mode="contained"
 				style={styles.button}
-				onPress={() => navigation.navigate("AppIndex")}
+				onPress={() => handleVerify("signin")}
 			>
 				<AntDesign
 					name="right"

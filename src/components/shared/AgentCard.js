@@ -14,11 +14,6 @@ const AgentsCard = ({ name, role, uuid }) => {
 				<AgentImage uuid={uuid} />
 				<View>
 					<Text style={styles.name}>{name.toUpperCase()}</Text>
-					<Text>
-						{role.map((role) => (
-							<Text key={role.uuid}>{role.displayName}</Text>
-						))}
-					</Text>
 				</View>
 			</Card.Content>
 		</Card>
