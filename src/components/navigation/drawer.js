@@ -17,6 +17,7 @@ const DrawerMenu = () => {
 		>
 			<Drawer.Screen name="Home" component={Home} />
 			<Drawer.Screen name="Agents" component={AgentStack} />
+			<Drawer.Screen name="Weapons" component={WeaponStackScreen} />
 		</Drawer.Navigator>
 	);
 };
