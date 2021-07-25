@@ -4,14 +4,17 @@ import { Provider as PaperProvider } from "react-native-paper";
 import theme from "./src/theme";
 import Navigation from "./src/components/navigation/SignStack";
 import { Provider as AuthProvider } from "./src/providers/AuthContext";
+import LongTimers from "./src/utils/longTimer";
 
 export default function App() {
-  return (
-    <AuthProvider>
-      <PaperProvider theme={theme}>
-        <StatusBar style="light" />
-        <Navigation />
-      </PaperProvider>
-    </AuthProvider>
-  );
+	LongTimers();
+
+	return (
+		<AuthProvider>
+			<PaperProvider theme={theme}>
+				<StatusBar style="light" />
+				<Navigation />
+			</PaperProvider>
+		</AuthProvider>
+	);
 }
