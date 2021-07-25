@@ -14,3 +14,4 @@ web-build/
 
 #environment variables and keys
 environment.js
+.prettierrc

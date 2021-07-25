@@ -9,17 +9,17 @@ import theme from "../../theme";
 const Drawer = createDrawerNavigator();
 
 const DrawerMenu = ({}) => {
-	return (
-		<Drawer.Navigator
-			drawerContent={(props) => <DrawerContent {...props} />}
-			initialRouteName="Home"
-			drawerStyle={{ backgroundColor: theme.colors.backgroundGreen }}
-		>
-			<Drawer.Screen name="Home" component={Home} />
-			<Drawer.Screen name="Agents" component={AgentStack} />
-			<Drawer.Screen name="Weapons" component={WeaponStackScreen} />
-		</Drawer.Navigator>
-	);
+  return (
+    <Drawer.Navigator
+      drawerContent={(props) => <DrawerContent {...props} />}
+      initialRouteName="Home"
+      drawerStyle={{ backgroundColor: theme.colors.backgroundGreen }}
+    >
+      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Agents" component={AgentStack} />
+      <Drawer.Screen name="Weapons" component={WeaponStackScreen} />
+    </Drawer.Navigator>
+  );
 };
 
 export default DrawerMenu;
