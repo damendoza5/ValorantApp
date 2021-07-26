@@ -5,6 +5,7 @@ import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import { Entypo } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 import theme from "../../theme";
 import { Context as AuthProvider } from "../../providers/AuthContext";
 
@@ -72,6 +73,23 @@ const DrawerContent = ({ props, navigation }) => {
                 )}
                 onPress={() => {
                   navigation.navigate("Weapons");
+                }}
+              />
+              <DrawerItem
+                icon={() => (
+                  <FontAwesome5
+                    name="spray-can"
+                    size={24}
+                    color={theme.colors.redAccent}
+                  />
+                )}
+                label={() => (
+                  <Text style={{ color: theme.colors.redAccent }}>
+                    Customizables
+                  </Text>
+                )}
+                onPress={() => {
+                  navigation.navigate("Customizables");
                 }}
               />
             </Drawer.Section>

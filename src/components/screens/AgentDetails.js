@@ -11,6 +11,7 @@ import AgentImage from "../shared/AgentImage";
 import theme from "../../theme";
 import { Ionicons } from "@expo/vector-icons";
 import AbilityInfo from "../shared/AbilityInfo";
+import AgentRole from "../shared/AgentRole";
 
 const deviceWidth = Dimensions.get("screen").width;
 const deviceHeight = Dimensions.get("screen").height;
@@ -45,7 +46,9 @@ const AgentDetails = ({ route, navigation }) => {
       </Card>
       <Title style={styles.desc}>DESCRIPTION:</Title>
       <Text style={styles.descText}>{item.description}</Text>
-      <Title style={styles.abili}>ABILITIES:</Title>
+      <Title style={styles.roleSect}>ROLE</Title>
+      <AgentRole uuid={role.uuid} role={role} />
+      <Title style={styles.abili}>ABILITIES</Title>
       <View style={styles.abilities}>
         <View style={styles.abilitiesC}>
           {abilities.map((ability) => (
@@ -109,6 +112,13 @@ const styles = StyleSheet.create({
   abili: {
     marginTop: "10%",
     marginLeft: "5%",
+    fontSize: 16,
+    color: theme.colors.backgroundWhite,
+  },
+  roleSect: {
+    marginLeft: "5%",
+    marginTop: "6%",
+    marginBottom: -20,
     fontSize: 16,
     color: theme.colors.backgroundWhite,
   },
