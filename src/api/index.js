@@ -41,3 +41,25 @@ export const fetchCards = async () => {
     console.log(error);
   }
 };
+
+export const fetchBundles = async () => {
+  try {
+    const endpoint = `${apiUrl}bundles`;
+    const response = await fetch(endpoint);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchMaps = async () => {
+  try {
+    const endpoint = `${apiUrl}maps`;
+    const response = await fetch(endpoint);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};

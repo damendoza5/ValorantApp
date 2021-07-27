@@ -20,13 +20,15 @@ const SprayPlayerCard = ({ name, uuid }) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 200,
-    width: 200,
+    height: 180,
+    width: 180,
     margin: 10,
     borderRadius: 20,
     borderWidth: 2,
     borderColor: theme.colors.backgroundWhite,
     backgroundColor: theme.colors.backgroundGreen,
+    position: "relative",
+    alignItems: "center",
   },
   name: {
     position: "relative",

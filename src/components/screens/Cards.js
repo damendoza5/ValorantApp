@@ -4,6 +4,8 @@ import { fetchCards } from "../../api";
 import CardList from "../shared/CardList";
 import theme from "../../theme";
 
+const deviceWidth = Dimensions.get("window").width;
+
 const Cards = ({ navigation }) => {
   const [card, setCard] = useState({});
 
@@ -30,6 +32,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 10,
     backgroundColor: theme.colors.backgroundGreen,
+    position: "relative",
   },
 });
 

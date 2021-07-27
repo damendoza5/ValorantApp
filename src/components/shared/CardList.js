@@ -11,6 +11,7 @@ import PlayerCard from "./PlayerCard";
 import theme from "../../theme";
 
 const deviceHeight = Dimensions.get("window").height;
+const deviceWidth = Dimensions.get("window").width;
 
 const CardList = ({ card, navigation }) => {
   const emptyFlatlist = (
@@ -49,6 +50,8 @@ const styles = StyleSheet.create({
   container: {
     bottom: deviceHeight * 0,
     marginTop: deviceHeight * 0,
+    width: deviceWidth,
+    paddingHorizontal: deviceWidth * 0.05,
   },
   foundContainer: {
     flex: 1,

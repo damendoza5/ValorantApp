@@ -1,10 +1,13 @@
 import React from "react";
+import { Dimensions } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import theme from "../../theme";
 import SprayStackScreen from "../screens/routes/SprayStack";
 import CardStackScreen from "../screens/routes/CardStack";
 
 const TopTab = createMaterialTopTabNavigator();
+
+const deviceWidth = Dimensions.get("window").width;
 
 const BarTop = () => {
   return (
@@ -15,7 +18,7 @@ const BarTop = () => {
           backgroundColor: theme.colors.redAccent,
         },
         tabStyle: {
-          width: 240,
+          width: deviceWidth * 0.5,
           backgroundColor: theme.colors.backgroundGreen,
         },
         activeTintColor: theme.colors.redAccent,

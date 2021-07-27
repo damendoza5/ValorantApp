@@ -1,14 +1,13 @@
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
-import getEnvVars from "../../../environment";
 
-const SprayImage = ({ uuid }) => {
+const BundleImage = ({ uuid }) => {
   return (
     <View>
       <Image
         style={styles.image}
         source={{
-          uri: `https://media.valorant-api.com/sprays/${uuid}/displayicon.png`,
+          uri: `https://media.valorant-api.com/bundles/${uuid}/verticalpromoimage.png`,
         }}
       />
     </View>
@@ -17,14 +16,12 @@ const SprayImage = ({ uuid }) => {
 
 const styles = StyleSheet.create({
   image: {
-    width: 100,
-    height: 100,
-    alignSelf: "center",
+    width: 400,
+    height: 500,
     position: "relative",
     resizeMode: "contain",
-    borderRadius: 15,
-    margin: 15,
+    borderRadius: 30,
   },
 });
 
-export default SprayImage;
+export default BundleImage;

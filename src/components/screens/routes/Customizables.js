@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     left: deviceWidth * 0.07,
   },
   hamburguer: {
-    top: deviceHeight * 0.02,
+    top: deviceHeight * 0.06,
     left: deviceWidth * 0.05,
   },
   back: {
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     left: deviceWidth * 0.75,
     width: 1,
   },
+  barTop: {},
 });
 
 export default Customizables;

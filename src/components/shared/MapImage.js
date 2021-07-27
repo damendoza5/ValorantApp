@@ -1,13 +1,13 @@
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
 
-const CardImage = ({ uuid }) => {
+const MapImage = ({ uuid }) => {
   return (
     <View>
       <Image
         style={styles.image}
         source={{
-          uri: `https://media.valorant-api.com/playercards/${uuid}/displayicon.png`,
+          uri: `https://media.valorant-api.com/maps/${uuid}/splash.png`,
         }}
       />
     </View>
@@ -16,14 +16,12 @@ const CardImage = ({ uuid }) => {
 
 const styles = StyleSheet.create({
   image: {
-    width: 100,
-    height: 100,
-    alignSelf: "center",
+    width: 350,
+    height: 500,
     position: "relative",
-    resizeMode: "contain",
-    borderRadius: 15,
-    margin: 15,
+    resizeMode: "cover",
+    borderRadius: 30,
   },
 });
 
-export default CardImage;
+export default MapImage;

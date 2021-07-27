@@ -7,16 +7,16 @@ import {
   Dimensions,
 } from "react-native";
 import { Title } from "react-native-paper";
-import SprayPlayerCard from "./SprayCard";
+import BundleCard from "./BundleCard";
 import theme from "../../theme";
 
-const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
+const deviceHeight = Dimensions.get("window").height;
 
-const SprayList = ({ spray, navigation }) => {
+const BundleList = ({ bundle }) => {
   const emptyFlatlist = (
     <View style={styles.foundContainer}>
-      <Title style={styles.title}>Spray data not found</Title>
+      <Title style={styles.title}>Bundle data not found</Title>
     </View>
   );
 
@@ -24,20 +24,15 @@ const SprayList = ({ spray, navigation }) => {
     <View>
       <FlatList
         style={styles.container}
-        data={spray.data}
+        data={bundle.data}
         keyExtractor={(item) => item.uuid.toString()}
-        numColumns={2}
+        horizontal
         showsHorizontalScrollIndicator={true}
         ListEmptyComponent={emptyFlatlist}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity
-              key={item.uuid}
-              onPress={() => {
-                navigation.navigate("SprayDetails", { item });
-              }}
-            >
-              <SprayPlayerCard name={item.displayName} uuid={item.uuid} />
+            <TouchableOpacity key={item.uuid}>
+              <BundleCard name={item.displayName} uuid={item.uuid} />
             </TouchableOpacity>
           );
         }}
@@ -49,12 +44,11 @@ const SprayList = ({ spray, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     bottom: deviceHeight * 0,
-    marginTop: deviceHeight * 0,
-    paddingHorizontal: deviceWidth * 0.05,
+    marginTop: deviceHeight * 0.05,
+    paddingLeft: deviceWidth * 0.05,
   },
   foundContainer: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
   },
   title: {
@@ -62,4 +56,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SprayList;
+export default BundleList;
