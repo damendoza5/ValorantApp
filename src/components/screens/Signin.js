@@ -1,9 +1,12 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View, Dimensions } from "react-native";
 import { Title, Text } from "react-native-paper";
 import SigninForm from "../forms/SigninForm";
 import theme from "../../theme";
 import Logo from "../shared/logo";
+
+const deviceWidth = Dimensions.get("window").width;
+const deviceHeight = Dimensions.get("window").height;
 
 function Signin({ navigation }) {
   return (
@@ -32,11 +35,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    padding: 10,
+    padding: deviceWidth * 0.01,
     backgroundColor: theme.colors.backgroundGreen,
   },
   forgotPassword: {
-    marginTop: "10%",
+    marginTop: deviceHeight * 0.03,
     position: "relative",
     alignSelf: "flex-start",
   },
@@ -45,7 +48,7 @@ const styles = StyleSheet.create({
     color: theme.colors.grayOscuro,
   },
   signup: {
-    marginTop: -20,
+    marginTop: deviceWidth * -0.03,
     position: "relative",
     alignSelf: "flex-end",
   },
@@ -68,8 +71,9 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     position: "absolute",
-    top: "10%",
-    right: "35%",
+    alignItems: "center",
+    top: deviceHeight * 0.09,
+    right: deviceWidth * 0.33,
   },
   slogan: {
     color: theme.colors.redAccent,

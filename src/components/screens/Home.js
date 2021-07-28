@@ -1,16 +1,40 @@
 import React, { useState, useEffect } from "react";
-import { Title, Card } from "react-native-paper";
-import { StyleSheet, View, Dimensions } from "react-native";
+import { Title, Text } from "react-native-paper";
+import { StyleSheet, View, ScrollView, Dimensions } from "react-native";
 import Logo from "../shared/logo";
 import { Entypo } from "@expo/vector-icons";
 import theme from "../../theme";
+import { fetchBundles } from "../../api";
+import { fetchMaps } from "../../api";
+import MapList from "../shared/MapList";
+import BundleList from "../shared/BundleList";
 
 const deviceWidth = Dimensions.get("screen").width;
 const deviceHeight = Dimensions.get("screen").height;
 
 const Home = ({ navigation }) => {
+  const [bundle, setBundle] = useState({});
+  const [map, setMap] = useState({});
+
+  const getBundle = async () => {
+    const response = await fetchBundles();
+
+    setBundle(response);
+  };
+
+  const getMap = async () => {
+    const response = await fetchMaps();
+
+    setMap(response);
+  };
+
+  useEffect(() => {
+    getBundle();
+    getMap();
+  }, []);
+
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} bounces={false}>
       <View>
         <Entypo
           name="menu"
@@ -26,30 +50,43 @@ const Home = ({ navigation }) => {
       <View>
         <Title style={styles.title}>DISCOVER</Title>
       </View>
-    </View>
+      <View>
+        <BundleList bundle={bundle} />
+      </View>
+      <Text style={styles.map}>MAPS</Text>
+      <View>
+        <MapList map={map} />
+      </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     padding: deviceWidth * 0.01,
     backgroundColor: theme.colors.backgroundGreen,
   },
   hamburguer: {
-    bottom: deviceHeight * 0.32,
-    left: deviceWidth * 0.05,
+    top: deviceHeight * 0.09,
+    left: deviceWidth * 0.1,
   },
   logo: {
-    bottom: deviceHeight * 0.38,
+    top: deviceHeight * 0.03,
     left: deviceWidth * 0.75,
   },
   title: {
     fontSize: 20,
     color: theme.colors.backgroundWhite,
-    bottom: deviceHeight * 0.37,
-    left: deviceWidth * 0.05,
+    top: deviceHeight * 0.06,
+    left: deviceWidth * 0.1,
+  },
+  map: {
+    paddingTop: deviceHeight * 0.03,
+    paddingLeft: deviceWidth * 0.09,
+    fontSize: 18,
+    fontWeight: "bold",
+    color: theme.colors.backgroundWhite,
   },
 });
 

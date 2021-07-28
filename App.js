@@ -5,6 +5,7 @@ import theme from "./src/theme";
 import Navigation from "./src/components/navigation/SignStack";
 import { Provider as AuthProvider } from "./src/providers/AuthContext";
 import LongTimers from "./src/utils/LongTimer";
+
 export default function App() {
 	LongTimers();
 
