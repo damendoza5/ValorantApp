@@ -5,7 +5,7 @@ import { Card } from "react-native-paper";
 import theme from "../../theme";
 import AgentImage from "./AgentImage";
 
-const AgentsCard = ({ name, role, uuid }) => {
+const AgentsCard = ({ name, uuid }) => {
 	return (
 		<Card style={styles.container}>
 			<Card.Content>
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
 		alignSelf: "center",
 		color: theme.colors.backgroundWhite,
 		fontWeight: "bold",
+
 		fontSize: 23,
 	},
 });
