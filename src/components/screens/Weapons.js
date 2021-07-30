@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Dimensions } from "react-native";
-import { Title } from "react-native-paper";
+import { ActivityIndicator, Title } from "react-native-paper";
 import { fetchWeapons } from "../../api";
 import WeaponList from "../shared/WeaponCardL";
 import { Entypo } from "@expo/vector-icons";
@@ -38,7 +38,11 @@ const Weapons = ({ navigation }) => {
         </View>
       </View>
       <Title style={styles.title}>WEAPONS</Title>
-      <WeaponList weapon={weapon} navigation={navigation} />
+      {weapon.data ? (
+        <WeaponList weapon={weapon} navigation={navigation} />
+      ) : (
+        <ActivityIndicator animating={true} color={theme.colors.redAccent} />
+      )}
     </View>
   );
 };

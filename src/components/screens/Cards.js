@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Dimensions } from "react-native";
+import { ActivityIndicator } from "react-native-paper";
 import { fetchCards } from "../../api";
 import CardList from "../shared/CardList";
 import theme from "../../theme";
@@ -21,7 +22,11 @@ const Cards = ({ navigation }) => {
 
   return (
     <View style={styles.back}>
-      <CardList card={card} navigation={navigation} />
+      {card.data ? (
+        <CardList card={card} navigation={navigation} />
+      ) : (
+        <ActivityIndicator animating={true} color={theme.colors.redAccent} />
+      )}
     </View>
   );
 };

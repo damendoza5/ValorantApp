@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  FlatList,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  Dimensions,
-} from "react-native";
+import { FlatList, StyleSheet, View, Dimensions } from "react-native";
 import { Title } from "react-native-paper";
 import BundleCard from "./BundleCard";
 import theme from "../../theme";
@@ -31,9 +25,9 @@ const BundleList = ({ bundle }) => {
         ListEmptyComponent={emptyFlatlist}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity key={item.uuid}>
+            <View key={item.uuid}>
               <BundleCard name={item.displayName} uuid={item.uuid} />
-            </TouchableOpacity>
+            </View>
           );
         }}
       />
@@ -44,7 +38,7 @@ const BundleList = ({ bundle }) => {
 const styles = StyleSheet.create({
   container: {
     bottom: deviceHeight * 0,
-    marginTop: deviceHeight * 0.05,
+    marginTop: deviceHeight * 0.07,
     paddingLeft: deviceWidth * 0.05,
   },
   foundContainer: {

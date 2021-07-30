@@ -12,7 +12,7 @@ const deviceWidth = Dimensions.get("window").width;
 const BarTop = () => {
   return (
     <TopTab.Navigator
-      initialRouteName="Sprays"
+      initialRouteName="Cards"
       tabBarOptions={{
         indicatorStyle: {
           backgroundColor: theme.colors.redAccent,

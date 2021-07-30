@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  FlatList,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  Dimensions,
-} from "react-native";
+import { FlatList, StyleSheet, View, Dimensions } from "react-native";
 import { Title } from "react-native-paper";
 import MapCard from "./MapCard";
 import theme from "../../theme";
@@ -31,13 +25,13 @@ const MapList = ({ map }) => {
         ListEmptyComponent={emptyFlatlist}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity key={item.uuid}>
+            <View key={item.uuid}>
               <MapCard
                 name={item.displayName}
                 uuid={item.uuid}
                 coordinates={item.coordinates}
               />
-            </TouchableOpacity>
+            </View>
           );
         }}
       />
@@ -48,7 +42,7 @@ const MapList = ({ map }) => {
 const styles = StyleSheet.create({
   container: {
     bottom: deviceHeight * 0,
-    marginTop: deviceHeight * 0.05,
+    marginTop: deviceHeight * 0.01,
     paddingLeft: deviceWidth * 0.05,
   },
   foundContainer: {

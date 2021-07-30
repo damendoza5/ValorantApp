@@ -51,9 +51,9 @@ const AgentDetails = ({ route, navigation }) => {
       <Title style={styles.abili}>ABILITIES</Title>
       <View style={styles.abilities}>
         <View style={styles.abilitiesC}>
-          {abilities.map((ability) => (
+          {abilities.map((ability, index) => (
             <AbilityInfo
-              key={ability.uuid}
+              key={index.toString()}
               displayName={ability.displayName}
               description={ability.description}
               uuid={item.uuid}
