@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   card: {
     marginHorizontal: 5,
     marginTop: deviceWidth * -0.11,
-    height: deviceHeight * 0.7,
+    height: deviceHeight * 0.78,
     width: deviceWidth * 1,
     margin: 20,
     backgroundColor: theme.colors.redAccent,

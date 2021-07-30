@@ -7,14 +7,14 @@ import { Provider as AuthProvider } from "./src/providers/AuthContext";
 import LongTimers from "./src/utils/LongTimer";
 
 export default function App() {
-  LongTimers();
+	LongTimers();
 
-  return (
-    <AuthProvider>
-      <PaperProvider theme={theme}>
-        <StatusBar style="light" />
-        <Navigation />
-      </PaperProvider>
-    </AuthProvider>
-  );
+	return (
+		<AuthProvider>
+			<PaperProvider theme={theme}>
+				<StatusBar style="light" />
+				<Navigation />
+			</PaperProvider>
+		</AuthProvider>
+	);
 }
