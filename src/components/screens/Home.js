@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Title, Text } from "react-native-paper";
+import { Title, Text, ActivityIndicator } from "react-native-paper";
 import { StyleSheet, View, ScrollView, Dimensions } from "react-native";
 import Logo from "../shared/logo";
 import { Entypo } from "@expo/vector-icons";
@@ -51,11 +51,19 @@ const Home = ({ navigation }) => {
         <Title style={styles.title}>DISCOVER</Title>
       </View>
       <View>
-        <BundleList bundle={bundle} />
+        {bundle.data ? (
+          <BundleList bundle={bundle} />
+        ) : (
+          <ActivityIndicator animating={true} color={theme.colors.redAccent} />
+        )}
       </View>
       <Text style={styles.map}>MAPS</Text>
       <View>
-        <MapList map={map} />
+        {map.data ? (
+          <MapList map={map} />
+        ) : (
+          <ActivityIndicator animating={true} color={theme.colors.redAccent} />
+        )}
       </View>
     </ScrollView>
   );

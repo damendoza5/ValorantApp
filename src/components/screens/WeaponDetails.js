@@ -23,7 +23,7 @@ const WeaponDetails = ({ route, navigation }) => {
   const renderByWeapon = () => {
     if (item.uuid === "2f59173c-4bed-b6c3-2191-dea9b58be9c7") {
       return (
-        <View style={styles.container}>
+        <View style={styles.container2}>
           <Card style={styles.card}>
             <Card.Content>
               <TouchableOpacity
@@ -128,6 +128,10 @@ const WeaponDetails = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: theme.colors.backgroundGreen,
+  },
+  container2: {
     flex: 1,
     backgroundColor: theme.colors.backgroundGreen,
     height: deviceHeight * 1,

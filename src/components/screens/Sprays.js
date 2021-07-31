@@ -3,6 +3,7 @@ import { StyleSheet, View, Dimensions } from "react-native";
 import { fetchSprays } from "../../api";
 import SprayList from "../shared/SprayList";
 import theme from "../../theme";
+import { ActivityIndicator } from "react-native-paper";
 
 const Sprays = ({ navigation }) => {
   const [spray, setSpray] = useState({});
@@ -19,7 +20,11 @@ const Sprays = ({ navigation }) => {
 
   return (
     <View style={styles.back}>
-      <SprayList spray={spray} navigation={navigation} />
+      {spray.data ? (
+        <SprayList spray={spray} navigation={navigation} />
+      ) : (
+        <ActivityIndicator animating={true} color={theme.colors.redAccent} />
+      )}
     </View>
   );
 };

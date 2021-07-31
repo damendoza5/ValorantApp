@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Dimensions } from "react-native";
-import { Title } from "react-native-paper";
+import { Title, ActivityIndicator } from "react-native-paper";
 import { fetchAgents } from "../../api";
 import AgentList from "../shared/AgentCardL";
 import { Entypo } from "@expo/vector-icons";
@@ -38,7 +38,11 @@ const Agents = ({ navigation }) => {
         </View>
       </View>
       <Title style={styles.title}>AGENTS</Title>
-      <AgentList agent={agent} navigation={navigation} />
+      {agent.data ? (
+        <AgentList agent={agent} navigation={navigation} />
+      ) : (
+        <ActivityIndicator animating={true} color={theme.colors.redAccent} />
+      )}
     </View>
   );
 };
@@ -49,11 +53,11 @@ const styles = StyleSheet.create({
     color: theme.colors.backgroundWhite,
     bottom: deviceHeight * 0.01,
     top: deviceHeight * 0,
-    left: deviceWidth * 0.07,
+    left: deviceWidth * 0.09,
   },
   hamburguer: {
-    top: deviceHeight * 0.02,
-    left: deviceWidth * 0.05,
+    top: deviceHeight * 0.04,
+    left: deviceWidth * 0.09,
   },
   back: {
     flex: 1,
@@ -62,7 +66,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.backgroundGreen,
   },
   logo: {
-    bottom: deviceHeight * 0,
+    bottom: deviceHeight * 0.025,
     left: deviceWidth * 0.75,
     width: 1,
   },
