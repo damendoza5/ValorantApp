@@ -1,5 +1,7 @@
 import createDataContext from "./createDataContext";
 import { firebase } from "../firebase";
+import * as firebaseui from "firebaseui";
+import { useUser } from "reactfire";
 
 const authReducer = (state, action) => {
 	switch (action.type) {
@@ -30,6 +32,7 @@ const authReducer = (state, action) => {
 				user: action.payload.user,
 				loggedIn: action.payload.loggedIn,
 			};
+
 		default:
 			return state;
 	}
