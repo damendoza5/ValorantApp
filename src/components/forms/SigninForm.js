@@ -4,6 +4,8 @@ import { Button, Caption, Text, TextInput } from "react-native-paper";
 import theme from "../../theme";
 import { AntDesign } from "@expo/vector-icons";
 import { Context as AuthContext } from "../../providers/AuthContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function SigninForm() {
 	const { state, signin } = useContext(AuthContext);
@@ -29,7 +31,9 @@ function SigninForm() {
 
 	return (
 		<View>
-			{state.errorMessage !== null && <Text>{state.errorMessage}</Text>}
+			{state.errorMessage !== null && (
+				<Text style={styles.textError}>{state.errorMessage}</Text>
+			)}
 			<TextInput
 				mode="outlined"
 				label="Email"
@@ -85,6 +89,9 @@ const styles = StyleSheet.create({
 	},
 	textInput2: {
 		backgroundColor: theme.colors.blueClaro,
+	},
+	textError: {
+		color: theme.colors.redAccent,
 	},
 });
 

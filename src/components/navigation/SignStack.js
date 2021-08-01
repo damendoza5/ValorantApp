@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Signin from "../screens/Signin";
 import Signup from "../screens/Singup";
 import AppIndex from "../screens/Index";
+import PasswordScreen from "../screens/ForgotPassword";
 import { NavigationContainer } from "@react-navigation/native";
 import { Context as AuthContext } from "../../providers/AuthContext";
 
@@ -26,6 +27,7 @@ function Navigation() {
 					<Stack.Navigator screenOptions={{ headerShown: false }}>
 						<Stack.Screen name="Signin" component={Signin} />
 						<Stack.Screen name="Signup" component={Signup} />
+						<Stack.Screen name="ForgotPassword" component={PasswordScreen} />
 					</Stack.Navigator>
 				)}
 			</>
