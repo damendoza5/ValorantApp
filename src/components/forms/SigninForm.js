@@ -4,16 +4,13 @@ import { Button, Caption, Text, TextInput } from "react-native-paper";
 import theme from "../../theme";
 import { AntDesign } from "@expo/vector-icons";
 import { Context as AuthContext } from "../../providers/AuthContext";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 function SigninForm() {
-	const { state, signin } = useContext(AuthContext);
+	const { state, signin, googleSignin } = useContext(AuthContext);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [emailError, setEmailError] = useState(false);
 	const [passwordError, setPasswordError] = useState(false);
-	const [error, setError] = useState("");
 
 	function handleVerify(input) {
 		if (input === "email") {
@@ -26,6 +23,8 @@ function SigninForm() {
 			if (email && password && !emailError && !passwordError) {
 				signin(email, password);
 			}
+		} else if (input === "googleSignin") {
+			googleSignin();
 		}
 	}
 
@@ -92,6 +91,16 @@ const styles = StyleSheet.create({
 	},
 	textError: {
 		color: theme.colors.redAccent,
+	},
+	buttonGoogle: {
+		alignSelf: "flex-start",
+		position: "relative",
+		marginTop: "-29.5%",
+		marginBottom: 20,
+		width: 107,
+		padding: 15,
+		borderRadius: 20,
+		backgroundColor: theme.colors.redAccent,
 	},
 });
 

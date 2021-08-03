@@ -8,7 +8,7 @@ import ForgotPasswordForm from "../forms/PasswordForm";
 const deviceWidth = Dimensions.get("window").width;
 const deviceHeight = Dimensions.get("window").height;
 
-const PasswordScreen = () => {
+const PasswordScreen = ({ navigation }) => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.logoContainer}>
@@ -18,6 +18,11 @@ const PasswordScreen = () => {
 			<View style={styles.signContainer}>
 				<Title style={styles.title}></Title>
 				<ForgotPasswordForm />
+				<TouchableOpacity onPress={() => navigation.goBack()}>
+					<Text style={styles.signin}>
+						<Text style={styles.signin}>Go Back</Text>
+					</Text>
+				</TouchableOpacity>
 			</View>
 		</View>
 	);

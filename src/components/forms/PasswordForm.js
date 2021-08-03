@@ -4,8 +4,6 @@ import { Button, Caption, TextInput, Text } from "react-native-paper";
 import theme from "../../theme";
 import { AntDesign } from "@expo/vector-icons";
 import { Context as AuthContext } from "../../providers/AuthContext";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const ForgotPasswordForm = ({ navigation }) => {
 	const [email, setEmail] = useState("");
@@ -25,17 +23,9 @@ const ForgotPasswordForm = ({ navigation }) => {
 
 	return (
 		<View>
-			<ToastContainer
-				position="bottom-right"
-				autoClose={5000}
-				hideProgressBar={false}
-				newestOnTop
-				closeOnClick={false}
-				rtl={false}
-				pauseOnFocusLoss
-				draggable
-				pauseOnHover
-			/>
+			{state.errorMessage !== null && (
+				<Text style={styles.textError}>{state.errorMessage}</Text>
+			)}
 			<Text>Enter a Registered Email</Text>
 			<TextInput
 				mode="outlined"

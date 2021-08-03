@@ -1,8 +1,5 @@
 import createDataContext from "./createDataContext";
 import { firebase } from "../firebase";
-import * as firebaseui from "firebaseui";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const authReducer = (state, action) => {
 	switch (action.type) {
