@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react";
-import { StyleSheet, View, Modal, Pressable } from "react-native";
+import React, { useState, useContext, useEffect } from "react";
+import { StyleSheet, View } from "react-native";
 import { Button, Caption, TextInput, Text } from "react-native-paper";
 import theme from "../../theme";
 import { AntDesign } from "@expo/vector-icons";
@@ -53,22 +53,3 @@ const ForgotPasswordForm = ({ navigation }) => {
 		</View>
 	);
 };
-
-const styles = StyleSheet.create({
-	button: {
-		alignSelf: "flex-end",
-		position: "relative",
-		marginTop: "15%",
-		marginBottom: 20,
-		width: 107,
-		padding: 15,
-		borderRadius: 20,
-		backgroundColor: theme.colors.redAccent,
-	},
-	textInput1: {
-		backgroundColor: theme.colors.blueClaro,
-		marginVertical: "2%",
-	},
-});
-
-export default ForgotPasswordForm;

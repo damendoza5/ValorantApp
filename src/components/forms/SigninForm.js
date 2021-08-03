@@ -30,9 +30,7 @@ function SigninForm() {
 
 	return (
 		<View>
-			{state.errorMessage !== null && (
-				<Text style={styles.textError}>{state.errorMessage}</Text>
-			)}
+			{state.errorMessage !== null && <Text>{state.errorMessage}</Text>}
 			<TextInput
 				mode="outlined"
 				label="Email"

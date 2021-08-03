@@ -30,11 +30,6 @@ const authReducer = (state, action) => {
 				user: action.payload.user,
 				loggedIn: action.payload.loggedIn,
 			};
-		case "forgotPassword":
-			return {
-				...state,
-			};
-
 		default:
 			return state;
 	}
@@ -142,38 +137,6 @@ const signout = (dispatch) => () => {
 			dispatch({ type: "errorMessage", payload: error.message });
 		});
 };
-const forgotPassword = (dispatch) => (email) => {
-	return firebase
-		.auth()
-		.sendPasswordResetEmail(email)
-		.then(() => {
-			dispatch({
-				type: "forgotPassword",
-				payload: { user: {}, loggedIn: false },
-			});
-			toast.success("Check your Email for password reset link", {
-				position: "bottom-right",
-				autoClose: 5000,
-				hideProgressBar: false,
-				closeOnClick: false,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-			});
-		})
-		.catch((error) => {
-			dispatch({ type: "errorMessage", payload: error.message });
-			toast.error(error.message, {
-				position: "bottom-right",
-				autoClose: 5000,
-				hideProgressBar: false,
-				closeOnClick: false,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-			});
-		});
-};
 
 export const { Provider, Context } = createDataContext(
 	authReducer,
@@ -182,7 +145,6 @@ export const { Provider, Context } = createDataContext(
 		signin,
 		persistLogin,
 		signout,
-		forgotPassword,
 	},
 	{
 		user: {},
